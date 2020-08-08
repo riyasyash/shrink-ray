@@ -24,3 +24,15 @@ func Respond(statusCode int, w http.ResponseWriter, resp interface{}) {
 	w.Header().Add("Content-Type", "application/json")
 	w.Write(b)
 }
+
+func Redirect(statusCode int, w http.ResponseWriter, resp string) {
+	w.Header().Add("Location", resp)
+	b, err := json.Marshal(resp)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprintf(w, "%v", err)
+	}
+	w.WriteHeader(statusCode)
+	w.Header().Add("Content-Type", "application/json")
+	w.Write(b)
+}

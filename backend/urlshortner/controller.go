@@ -40,11 +40,11 @@ func (c *URLShortnerController) Redirect(w http.ResponseWriter, r *http.Request)
 	url, err := c.getURL(r.RequestURI[1:])
 	if err != nil {
 		fmt.Println(err)
-		api.Respond(302, w, "/error")
+		api.Redirect(302, w, "/error")
 	}
 	if url != "" {
-		api.Respond(302, w, url)
+		api.Redirect(302, w, url)
 	} else {
-		api.Respond(302, w, "/")
+		api.Redirect(302, w, "/")
 	}
 }
