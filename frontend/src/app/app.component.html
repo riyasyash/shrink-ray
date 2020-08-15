@@ -1,0 +1,12 @@
+  <mat-card class="input-card">
+    <mat-card-content>
+      <input matInput class="card-content" placeholder="Enter a url to shrink">
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="shrink()">Shrink</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="shrinked" *ngIf="shrinked">
+    Shrinked
+  </mat-card>

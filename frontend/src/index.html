@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Frontend</title>
+  <base href="/">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="/assets/p5.min.js"></script>
+  <script src="/assets/three.r95.min.js"></script>
+  <script src="/assets/vanta.birds.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      VANTA.BIRDS({
+        el: "#vantajs",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0xffffff,
+        color1: 0x98
+      });
+
+    })    
+  </script>
+</head>
+
+<body>
+  <div class="root" id="vantajs"></div>
+  <div class="header">
+    <h1 style="font-family: cursive;margin-bottom:0;"> Shrink Ray</h1>
+    <h4 style="margin:0;"> Smaller URLs makes the world a better place ;)</h4>
+  </div>
+  <app-root></app-root>
+</body>
+
+</html>

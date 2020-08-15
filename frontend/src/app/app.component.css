@@ -1,0 +1,46 @@
+input {
+    width: 80%;
+    font-size: 18px;
+    padding: 1%;
+}
+button {
+    float: right;
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    background-color: #34a8eb;
+    border: none;
+    padding: 5px;
+    color: white;
+    font-weight: 500;
+}
+
+.header {
+    font-size: 24px;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+}
+
+.container {
+    align-items: center;
+}
+.shrinked {
+    margin-top: 2%;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+}
+.card-content {
+    text-align: center;
+    align-items: center;
+}
+.input-card {
+    margin-top: 20%;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    z-index: 2;
+}
