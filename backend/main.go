@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/riyasyash/shrink-ray/db"
 	"github.com/riyasyash/shrink-ray/urlshortner"
@@ -11,6 +12,9 @@ import (
 
 func main() {
 	r := mux.NewRouter()
+	header := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"})
+	origins := handlers.AllowedOrigins([]string{"*"})
 	s := r.PathPrefix("/api").Subrouter()
 	Db, err := db.GetDatabase()
 	if err != nil {
@@ -22,6 +26,6 @@ func main() {
 
 	r.PathPrefix("/").HandlerFunc(c.Redirect).Methods("GET")
 	http.Handle("/", r)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8080", handlers.CORS(header, methods, origins)(r)))
 
 }

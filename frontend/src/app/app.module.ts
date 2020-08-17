@@ -7,8 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
-import { ParticlesModule } from 'angular-particle';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import {
+  ShortenService
+} from './services';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,9 +24,13 @@ import { ParticlesModule } from 'angular-particle';
     MatCardModule,
     MatInputModule,
     MatIconModule,
-    ParticlesModule
+    HttpClientModule,
+    FormsModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    ShortenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

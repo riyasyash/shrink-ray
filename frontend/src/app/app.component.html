@@ -1,6 +1,6 @@
   <mat-card class="input-card">
     <mat-card-content>
-      <input matInput class="card-content" placeholder="Enter a url to shrink">
+      <input matInput class="card-content" placeholder="Enter a url to shrink" [(ngModel)]="url">
 
     </mat-card-content>
     <mat-card-actions>
@@ -8,5 +8,5 @@
     </mat-card-actions>
   </mat-card>
   <mat-card class="shrinked" *ngIf="shrinked">
-    Shrinked
+    {{key}}
   </mat-card>

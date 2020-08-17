@@ -15,6 +15,7 @@ func Decode(w http.ResponseWriter, r *http.Request, v interface{}) error {
 }
 
 func Respond(statusCode int, w http.ResponseWriter, resp interface{}) {
+	fmt.Println(resp)
 	b, err := json.Marshal(resp)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -26,6 +27,7 @@ func Respond(statusCode int, w http.ResponseWriter, resp interface{}) {
 }
 
 func Redirect(statusCode int, w http.ResponseWriter, resp string) {
+	fmt.Println(resp)
 	w.Header().Add("Location", resp)
 	b, err := json.Marshal(resp)
 	if err != nil {

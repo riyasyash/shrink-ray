@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-import BIRDS from 'src/assets/vanta.birds.min'
+import { ShortenService } from './services';
+import { environment } from '../environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,15 +9,41 @@ import BIRDS from 'src/assets/vanta.birds.min'
 })
 export class AppComponent implements OnInit {
   shrinked: boolean = false;
-  myStyle: object = {};
-  myParams: object = {};
-  width: number = 100;
-  height: number = 100;
+  url: string = null;
+  key: string = null;
+  constructor(
+    private shortenSVC: ShortenService,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
   }
 
   shrink() {
-    this.shrinked = true;
+    if(!this.validUrl()){
+      this._snackBar.open("Please enter a valid url", '', {
+        duration: 5000,
+      });
+      return
+    }
+    this.shortenSVC.shorten('/api/shorten', { url: this.url }).subscribe(
+      res => {
+        this.key = `${environment.hostUrl}/${res}`;
+        this.shrinked = true;
+      },
+      err => {
+        console.log(err)
+        // const errorMsg = err.errors[0] ? err.errors[0] : 'Error while Logging.';
+      }
+    );
+  }
+  validUrl(){
+    if (!this.url){
+      return false
+    }
+    if(this.url.startsWith('http://')||this.url.startsWith('https://')){
+      return true;
+    }
+    return false;
   }
 }

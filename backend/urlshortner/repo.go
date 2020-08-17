@@ -13,6 +13,7 @@ type URLShortnerRepo struct {
 }
 
 func (r *URLShortnerRepo) Insert(s ShortenedURL) error {
+	fmt.Println(s.Key)
 	stmt, err := r.Db.Prepare("INSERT INTO urls(key, url, banned, created_at) values(?,?,?,?)")
 	if err != nil {
 		return err
