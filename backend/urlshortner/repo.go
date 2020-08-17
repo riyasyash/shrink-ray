@@ -37,3 +37,17 @@ func (r *URLShortnerRepo) Find(s string) (string, error) {
 	rows.Close()
 	return url, nil
 }
+
+func (r *URLShortnerRepo) Exists(s string) (string, error) {
+	q := fmt.Sprintf("SELECT key FROM urls where url='%s';", s)
+	rows, err := r.Db.Query(q)
+	if err != nil {
+		return "", err
+	}
+	var key string
+	for rows.Next() {
+		err = rows.Scan(&key)
+	}
+	rows.Close()
+	return key, nil
+}

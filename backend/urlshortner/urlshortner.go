@@ -17,7 +17,14 @@ func (c *URLShortnerController) shortenURL(url string) (string, error) {
 		URL:    url,
 		Banned: false,
 	}
-	err := c.Repo.Insert(su)
+	eKey, err := c.Repo.Exists(url)
+	if err != nil {
+		return "", err
+	}
+	if eKey != "" {
+		return eKey, nil
+	}
+	err = c.Repo.Insert(su)
 	if err != nil {
 		return "", err
 	}
