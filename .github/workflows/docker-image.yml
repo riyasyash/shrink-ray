@@ -19,7 +19,7 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v1
       with:
-        dockerfile: frontend/Dockerfile
+        dockerfile: shrink-ray/frontend/Dockerfile
         username: ${{ secrets.D_USER }}
         password: ${{ secrets.D_PASS }}
         repository: riyasyash/shrinkray-app
