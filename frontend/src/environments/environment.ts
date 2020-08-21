@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   hostUrl: 'http://shrinkray.riyasyash.me',
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://shrinkray.riyasyash.me'
 };
 
 /*
