@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1
+      with:
+        path: frontend
+        username: ${{ secrets.D_USER }}
+        password: ${{ secrets.D_PASS }}
+        repository: riyasyash/shrinkray-app
+        tag_with_ref: true
+        tag_with_sha: true
