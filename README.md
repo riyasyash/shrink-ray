@@ -1,6 +1,11 @@
 # shrink-ray
 A url shortener service written using Go and presented using Angular
 
+
+link: http://shrinkray.riyasyash.me
+
+![Screenshot](Screenshot.png)
+
 ## Build
 * backend : set a GOPATH and run `go build main.go` in the backend directory
 * frontend : run `ng build --prod` in the frontend dir
