@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
       return
     }
     if(!this.shortUrl()){
-      this._snackBar.open("This url is already short!", '', {
+      this._snackBar.open("Sorry, this url cannot be shrunk as it is already short ", '', {
         duration: 5000,
       });
       return
