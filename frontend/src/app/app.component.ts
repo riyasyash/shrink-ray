@@ -26,6 +26,12 @@ export class AppComponent implements OnInit {
       });
       return
     }
+    if(!this.shortUrl()){
+      this._snackBar.open("This url is already short!", '', {
+        duration: 5000,
+      });
+      return
+    }
     this.shortenSVC.shorten('/api/shorten', { url: this.url }).subscribe(
       res => {
         this.key = `${environment.hostUrl}/${res}`;
@@ -45,5 +51,11 @@ export class AppComponent implements OnInit {
       return true;
     }
     return false;
+  }
+  shortUrl(){
+    if (this.url.length<39){
+      return false
+    }
+    return true
   }
 }
