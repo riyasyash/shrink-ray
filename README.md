@@ -8,11 +8,14 @@ link: http://shrinkray.riyasyash.me
 
 ## Build
 * backend : set a GOPATH and run `go build main.go` in the backend directory
+
+Checkout the backend directory for instructions on setting up the dev environment
+
 * frontend : run `ng build --prod` in the frontend dir
 
 ## Deploy
-* backend : run the `goweb.service` in config directory
-* frontend: Install `nginx` and setup the `nginx.default` from config directory
+* **backend** : run the `goweb.service` in config directory
+* **frontend**: Install `nginx` and setup the `nginx.default` from config directory
 
 
 ## contribute
@@ -22,4 +25,4 @@ link: http://shrinkray.riyasyash.me
 * Fix issues
 * Create PRs
 
-Happy Shrinking!
+**Happy Shrinking!**
