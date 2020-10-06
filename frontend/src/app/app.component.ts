@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
       });
       return
     }
-    if(!this.shortUrl()){
+    if(!this.isShortURL()){
       this._snackBar.open("Sorry, this url cannot be shrunk as it is already short ", '', {
         duration: 5000,
       });
@@ -52,8 +52,9 @@ export class AppComponent implements OnInit {
     }
     return false;
   }
-  shortUrl(){
-    if (this.url.length<39){
+  isShortURL(){
+    const minLength = 39;
+    if (this.url.length<minLength){
       return false
     }
     return true
