@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  hostUrl: 'http://shrinkray.riyasyash.me',
-  apiUrl: 'http://shrinkray.riyasyash.me'
+  hostUrl: 'https://shrinkray.riyasyash.me',
+  apiUrl: 'https://shrinkray.riyasyash.me'
 };
 
 /*
