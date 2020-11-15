@@ -47,3 +47,6 @@ button {
     margin-left: 10%;
     z-index: 2;
 }
+.shrinked {
+    overflow-x: scroll;
+}
