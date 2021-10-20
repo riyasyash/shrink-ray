@@ -1,6 +1,8 @@
 package urlshortner
 
-import "time"
+import ("time"
+	"fmt"
+)
 
 // ShortenedURL the shrinked url and the key
 type ShortenedURL struct {
@@ -19,6 +21,7 @@ func (c *URLShortnerController) shortenURL(url string) (string, error) {
 	}
 	eKey, err := c.Repo.Exists(url)
 	if err != nil {
+		fmt.Println("error",err.Error())
 		return "", err
 	}
 	if eKey != "" {

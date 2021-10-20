@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/lib/pq"
 )
 
 type URLShortnerRepo struct {
@@ -13,12 +13,13 @@ type URLShortnerRepo struct {
 }
 
 func (r *URLShortnerRepo) Insert(s ShortenedURL) error {
-	fmt.Println(s.Key)
-	stmt, err := r.Db.Prepare("INSERT INTO urls(key, url, banned, created_at) values(?,?,?,?)")
-	if err != nil {
-		return err
-	}
-	_, err = stmt.Exec(s.Key, s.URL, s.Banned, time.Now())
+	stmt:="INSERT INTO urls(key, url, banned, created_at) values($1,$2,$3,$4) RETURNING ID;"
+	// if err != nil {
+	// 	fmt.Println(stmt)
+	// 	fmt.Println("error", err.Error())
+	// 	return err
+	// }
+	_, err := r.Db.Query(stmt, s.Key, s.URL, s.Banned, time.Now())
 	if err != nil {
 		return err
 	}
@@ -43,6 +44,7 @@ func (r *URLShortnerRepo) Exists(s string) (string, error) {
 	q := fmt.Sprintf("SELECT key FROM urls where url='%s';", s)
 	rows, err := r.Db.Query(q)
 	if err != nil {
+		fmt.Println("error",err.Error())
 		return "", err
 	}
 	var key string

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  hostUrl: 'https://shrinkray.riyasyash.me',
-  apiUrl: 'https://shrinkray.riyasyash.me'
+  hostUrl: 'https://shrinkray.lightwingtest.com',
+  apiUrl: 'https://shrinkray.lightwingtest.com'
 };
